@@ -18,17 +18,17 @@ KMPSearch(String DNASequence, String DiscaseDNA) {
     j <-- 0 //index for DiscaseDNA
 
     while ((N - i) >= (M - j)) 
-      //if character is same the increment both the index
+            //if character is same the increment both the index
 			if (DNASequence.charAt(j) == DiscaseDNA.charAt(i)) 
 				j++;
 				i++;
 			
-      // print the location where the DNA sequence is found
+            // print the location where the DNA sequence is found
 			if (j == M) 
 				System.out.println("Found DNASequence at index " + (i - j));
 				j = check[j - 1];
 			
-      //mismatch after j is matches don't match check[0..j-1] characters, they will match anyway
+            //mismatch after j is matches don't match check[0..j-1] characters, they will match anyway
 			else if (i < N && DNASequence.charAt(j) != DiscaseDNA.charAt(i)) 
 				if (j != 0)
 					j = check[j - 1];
@@ -40,19 +40,19 @@ KMPSearch(String DNASequence, String DiscaseDNA) {
 
 void computeDiscaseDNA(String DNASequence, int M, int check[]) {
 		
-    len <-- 0;
+        len <-- 0;
 		i <-- 1;
 		check[0] <-- 0; //check always start with 0
 
-    // the loop calculates check[i] for i <-- 1 to M-1
+        // the loop calculates check[i] for i <-- 1 to M-1
 		while (i < M) 
-      // if char[DNASequence(i)] is equal to char[DNASequence(len)] then asignlen to check and increment len and i
+            // if char[DNASequence(i)] is equal to char[DNASequence(len)] then asignlen to check and increment len and i
 			if (DNASequence.charAt(i) == DNASequence.charAt(len)) 
 				len++;
 				check[i] = len;
 				i++;
 			
-      //if char[DNASequence(i)] is equal to char[DNASequence(len)]
+            //if char[DNASequence(i)] is equal to char[DNASequence(len)]
 			else 
 				if (len != 0) 
 					len = check[len - 1];
